@@ -1,7 +1,7 @@
 import requests,json
 
 def get_quotes():
-    response = requests.get('https://famous-quotes4.p.rapidapi.com/random')
+    response = requests.get('http://quotes.stormconsultancy.co.uk/random.json')
     if response.status_code == 200:
         quote = response.json()
         return quote
