@@ -1,6 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="container">
+        <div class="card cardquote bg-info">
+            <div class="card-title">
+                <h2>Quote of the Day</h2></hr>
+            </div>
+            <p class="card-text">{{random_quote.quote}}</p>
+            <p>{{random_quote.author}}</p>
+        </div>
+  </div>
+    <div class="container">
         <div class="row row-cols-md-3 g-4 mt-2">
             {% for post in posts%}
                <div class="col">
