@@ -125,34 +125,3 @@ def delete_post(post_id):
     flash('Post deleted!', 'danger')
     return redirect(url_for('home'))
 
-@app.route('/like/<int:post_id>',methods = ['POST','GET'])
-@login_required
-def like(post_id):
-    get_posts = Upvote.query.get(post_id)
-    valid_string = f'{current_user.id}:{id}'
-    """ for post in get_posts:
-        to_str = f'{post}'
-        print(valid_string+" "+to_str)
-        if valid_string == to_str:
-            return redirect(url_for('home'))
-        else:
-            continue """
-    new_vote = Upvote(user = current_user, post_id=id)
-    new_vote.save()
-    return redirect(url_for('home'))
-
-@app.route('/dislike/<int:post_id>',methods = ['POST','GET'])
-@login_required
-def dislike(id):
-    post = Downvote.get_downvotes(id)
-    valid_string = f'{current_user.id}:{id}'
-    for p in post:
-        to_str = f'{p}'
-        print(valid_string+" "+to_str)
-        if valid_string == to_str:
-            return redirect(url_for('home',id=id))
-        else:
-            continue
-    new_downvote = Downvote(user = current_user, post_id=id)
-    new_downvote.save()
-    return redirect(url_for('home',id = id))
