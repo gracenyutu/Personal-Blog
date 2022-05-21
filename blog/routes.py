@@ -134,3 +134,26 @@ def delete_post(post_id):
     flash('Post deleted!', 'danger')
     return redirect(url_for('home'))
 
+@app.route("/post/<int:post_id>/comment/new", methods=["POST","GET"])
+@login_required
+def comment(post_id):
+    post = Post.query.get_or_404(post_id)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(content=form.content.data,user_id=current_user.id, post_id=post.id)
+        db.session.add(comment)
+        db.session.commit()
+        flash('Comment created successfully!', 'success')
+        return redirect(url_for('post',post_id=post.id))
+    return render_template("create_comment.html", title="post a comment", form=form, legend="Post a comment")
+
+@app.route("/comment/<int:comment_id>/delete", methods=["POST",'GET'])
+@login_required
+def delete_comment(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    if comment.post.author != current_user:
+            abort(403)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Comment deleted!','success')
+    return redirect(url_for('post', post_id=comment.post.id))
