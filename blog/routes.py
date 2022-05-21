@@ -2,7 +2,7 @@ import os
 import secrets, requests, json
 from flask import render_template, url_for, flash, redirect, request, abort
 from blog import app, db, bcrypt
-from blog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
+from blog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, CommentForm
 from blog.models import User, Post, Comment, Quote
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -103,7 +103,8 @@ def new_post():
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template('post.html', post=post)
+    comments = Comment.query.filter_by(post_id=post.id)
+    return render_template('post.html', post=post, comments=comments)
 
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
@@ -145,7 +146,7 @@ def comment(post_id):
         db.session.commit()
         flash('Comment created successfully!', 'success')
         return redirect(url_for('post',post_id=post.id))
-    return render_template("create_comment.html", title="post a comment", form=form, legend="Post a comment")
+    return render_template("comment.html", title="Comment", form=form, legend="Comment")
 
 @app.route("/comment/<int:comment_id>/delete", methods=["POST",'GET'])
 @login_required

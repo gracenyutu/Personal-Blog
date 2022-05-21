@@ -14,8 +14,6 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
-    upvote = db.relationship('Upvote',backref='user',lazy='dynamic')
-    downvote = db.relationship('Downvote',backref='user',lazy='dynamic')
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
@@ -27,9 +25,6 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     comment = db.relationship('Comment',backref='post',lazy='dynamic')
-    upvote = db.relationship('Upvote',backref='post',lazy='dynamic')
-    downvote = db.relationship('Downvote',backref='post',lazy='dynamic')
-    # category = db.Column(db.String(255), index = True,nullable = False)
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"

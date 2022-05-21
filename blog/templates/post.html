@@ -15,6 +15,11 @@
             </div>
             <h2 class="post-type">{{ post.title }}</h2>
             <p class="post-content">{{ post.content }}</p>
+            <div>
+              <a class="btn btn-secondary btn-sm m-1" href="{{ url_for('comment', post_id=post.id)}}">Comment</a>
+              <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete comment</button>
+            </div>
+            
         </div>
     </div>
     <div class="modal fade" id="deleteModalScrollable" tabindex="-1" role="dialog" aria-labelledby="deleteModalScrollableTitle" aria-hidden="true">
