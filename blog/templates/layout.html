@@ -38,8 +38,8 @@
         </div>
     </header>
     <main role="main" class="container">
-        <div class="row">
-          <div class="col-md-8">
+        <!-- <div class="row"> -->
+          <div class="card" style="width: 18rem;">
               {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                   {% for category, message in messages %}
@@ -51,7 +51,7 @@
               {% endwith%}
               {% block content %}{% endblock %}
           </div>
-          <div class="col-md-4">
+          <!-- <div class="col-md-4"> -->
             <div class="container">
               <div class="card cardquote">
                   <div class="card-title">
@@ -79,7 +79,7 @@
             </form> -->
           </div>
         </div>
-        <footer class="mt-4 py-3">
+        <footer class="mt-4 bg-steel fixed-bottom">
           <div class="container-fluid">
             <p class="text-center">&copy;2022 blogger</p>
           </div>
