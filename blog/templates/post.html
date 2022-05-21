@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="media content-section">
+        <img class="rounded-circle media-img" src="{{ url_for('static', filename='images/' + post.author.image_file) }}" alt="">
+        <div class="media-body">
+            <div class="post-metadata">
+                <a class="mr-2" href="#">{{ post.author.username }}</a>
+                <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h2 class="post-type">{{ post.title }}</h2>
+            <p class="post-content">{{ post.content }}</p>
+            <a href="{{url_for('like', post_id=post.id)}}">like</a>
+        </div>
+    </div>
+{% endblock %}
