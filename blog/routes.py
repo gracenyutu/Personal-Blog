@@ -3,7 +3,7 @@ import secrets
 from flask import render_template, url_for, flash, redirect, request, abort
 from blog import app, db, bcrypt
 from blog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
-from blog.models import User, Post, Comment, Upvote, Downvote
+from blog.models import User, Post, Comment, Upvote, Downvote, Quote
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -71,7 +71,7 @@ def account():
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
-        flash('accout updated successfully!', 'success')
+        flash('account updated successfully!', 'success')
         return redirect(url_for('account'))
     elif request.method == 'GET':
         form.username.data = current_user.username

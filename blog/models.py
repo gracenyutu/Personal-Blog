@@ -91,15 +91,11 @@ class Downvote(db.Model):
     def __repr__(self):
         return f'{self.user_id}:{self.post_id}'
 
-class Quotes:
+class Quote:
     '''
-    Sources class that defines quotes objects
+    Quotes class that defines quotes objects
     '''
-    def __init__(self,id,name,description,url,category,language,country):
-        self.id = id
-        self.name = name
-        self.description = description
-        self.url = url
-        self.category = category
-        self.language = language
-        self.country = country
+    def __init__(self,author, quote):
+        self.author = author
+        self.quote = quote
+        
