@@ -56,9 +56,9 @@
               <div class="card cardquote">
                   <div class="card-title">
                     <h2>Quote of the Day</h2></hr>
-                    <h4>A quote by: <span style="color: rgb(3, 3, 3)">{{random_quote.author}}</span> </h4>
                   </div>
                   <p class="card-text">{{random_quote.quote}}</p>
+                  <p>{{random_quote.author}}</p>
               </div>
           </div>
           <div class="container-fluid">
@@ -68,7 +68,7 @@
             {{ message }}
             </div>
             {% endfor %}
-            <form class="form-inline ml-2" action="{{url_for('home')}}" method="POST">
+            <!-- <form class="form-inline ml-2" action="{{url_for('login')}}" method="POST">
                 <div class="md-form form-group">
                     <label class="white-color">Email Address...</label>
                     <input type="email"  class="form-control " name ="subscriber" required>
@@ -76,9 +76,14 @@
                 <div class="md-form form-group">
                     <button class="btn btn-sm btn-outline-info" id="subs">Subscribe</button>
                 </div>
-            </form>
+            </form> -->
           </div>
         </div>
+        <footer class="mt-4 py-3">
+          <div class="container-fluid">
+            <p class="text-center">&copy;2022 blogger</p>
+          </div>
+        </footer>
       </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
