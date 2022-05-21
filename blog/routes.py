@@ -1,17 +1,26 @@
 import os
-import secrets
+import secrets, requests, json
 from flask import render_template, url_for, flash, redirect, request, abort
 from blog import app, db, bcrypt
 from blog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
-from blog.models import User, Post, Comment, Upvote, Downvote, Quote
+from blog.models import User, Post, Comment, Quote
 from flask_login import login_user, current_user, logout_user, login_required
+
+def get_quote():
+    quote_url = 'http://quotes.stormconsultancy.co.uk/random.json'
+    req = requests.get(quote_url)
+    data = json.loads(req.content)
+    quote = Quote(data["quote"],data["author"])
+    return quote
 
 
 @app.route("/")
 @app.route("/home")
 def home():
+    quote = get_quote()
+    print(quote)
     posts = Post.query.all()
-    return render_template('home.html', posts=posts)
+    return render_template('home.html', posts=posts, random_quote=quote)
 
 @app.route("/about")
 def about():
