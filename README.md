@@ -21,7 +21,7 @@ To get the code..
 
 1. Cloning the repository:
   ```bash
-  git clone [https://github.com/gracenyutu/perfect-pitch.git]
+  git clone (https://github.com/gracenyutu/Personal-Blog.git)
   ```
 2. Move to the folder and install requirements
   ```bash
