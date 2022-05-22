@@ -5,8 +5,7 @@ This is a personal blogging website where a user can create and share their opin
 
 Grace Nyutu
 
-# Description
-This is an application that allows users to submit their one minute pitches and other users will vote on them and leave comments to give their feedback on them.
+
 ## Live Demo
 
 Click [Link](https://nyutublog.herokuapp.com/) to visit my site
@@ -25,7 +24,7 @@ To get the code..
   ```
 2. Move to the folder and install requirements
   ```bash
-  cd perfectpitch
+  cd personalblog
   pip install -r requirements.txt
   ```
 
